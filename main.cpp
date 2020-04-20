@@ -21,3 +21,6 @@ int main() {
 
 	return 0;
 }
+
+// TODO
+// pair the portal names, usernames and passwords into one multi dimentional array.

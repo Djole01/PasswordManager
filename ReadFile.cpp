@@ -15,8 +15,13 @@
 using namespace std;
 void readFromFIle() {
 
-	string word;
+	string portal; // platform/website/app
+	string password;
+	string username;
+
+	array<string,10> portals;
 	array<string,10> passwords;
+	array<string,10> usernames;
 
 	// open passwords.txt for reading
 	ifstream read("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/passwords.txt");
@@ -28,9 +33,10 @@ void readFromFIle() {
 	// add it to array of passwords
 
 	int i = 0;
-	while (read >> word) {
-		cout << "row: " << word << endl;
-		passwords[i] = word;
+	while (read >> portal >> username >> password) {
+		passwords[i] = password;
+		portals[i] = portal;
+		usernames[i] = username;
 		i++;
 	}
 
@@ -41,6 +47,7 @@ void readFromFIle() {
 
 	// print out the contents of array
 	for (unsigned int x = 0; x < passwords.size(); x ++){
-		cout << passwords[x] << endl;
+		cout << portals[x] << " " <<  usernames[x] <<" " << passwords[x] << endl;
+
 	}
 }

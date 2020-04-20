@@ -10,6 +10,7 @@
 #include <string>
 #include <array>
 #include <fstream>
+#include "ReadFile.h"
 
 using namespace std;
 void readFromFIle() {

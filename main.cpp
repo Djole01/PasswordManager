@@ -11,11 +11,13 @@
 #include <array>
 #include <fstream>
 #include "ReadFile.h"
+#include "WritingFiles.h"
 using namespace std;
 
 int main() {
 
 	readFromFIle();
+	writeToFile();
 
 	return 0;
 }

@@ -8,46 +8,50 @@
 
 #include <iostream>
 #include <string>
-#include <array>
 #include <fstream>
 #include "ReadFile.h"
 
 using namespace std;
+
 void readFromFIle() {
 
+	int rowLength;
+	int columnLength;
 	string portal; // platform/website/app
 	string password;
 	string username;
-
-	array<string,10> portals;
-	array<string,10> passwords;
-	array<string,10> usernames;
+	string credentials[10][3];
 
 	// open passwords.txt for reading
 	ifstream read("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/passwords.txt");
 
 	// if reading is successful
 	if (read.is_open()) {
-	// read one string type value from the file
-	//read >> words;
-	// add it to array of passwords
+		// read one string type value from the file
+		//read >> words;
+		// add it to array of passwords
 
-	int i = 0;
-	while (read >> portal >> username >> password) {
-		passwords[i] = password;
-		portals[i] = portal;
-		usernames[i] = username;
-		i++;
-	}
+		int i = 0;
+		while (read >> portal >> username >> password) {
+			credentials[i][0] = portal;
+			credentials[i][1] = password;
+			credentials[i][2] = username;
+			i++;
+		}
 
 	} else {
-	cout << "Unable to open the file!" << endl;
-	exit(-1);
+		cout << "Unable to open the file!" << endl;
+		exit(-1);
 	}
 
-	// print out the contents of array
-	for (unsigned int x = 0; x < passwords.size(); x ++){
-		cout << portals[x] << " " <<  usernames[x] <<" " << passwords[x] << endl;
+	rowLength= sizeof credentials / sizeof credentials[0];
+	columnLength= sizeof credentials[0] / sizeof(string);
 
+	// print out the contents of array
+	for (int x = 0; x < rowLength; x ++){
+		for (int y = 0; y < columnLength; y++) {
+			cout << credentials[x][y] << " ";
+		}
+		cout << endl;
 	}
 }

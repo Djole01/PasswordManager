@@ -22,5 +22,7 @@ int main() {
 	return 0;
 }
 
-// TODO
-// pair the portal names, usernames and passwords into one multi dimentional array.
+/* TODO
+ - Encrpyt and decrypt the file every time it is opened and closed.
+ - Provide an ui through command line.
+*/

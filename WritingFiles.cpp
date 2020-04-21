@@ -20,7 +20,7 @@ void writeToFile()
     string row;
     bool input_continues = true;
 
-    cout << "Write your Input.\nFinish by pressing 2x[return]." << endl;
+    cout << "Write your Input in the following order: identifier usename password.\nFinish by pressing 2x[return]." << endl;
     cout << "- - - - - - - - - -" << endl;
 
     while(input_continues) {

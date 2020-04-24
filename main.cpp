@@ -15,8 +15,9 @@
 using namespace std;
 
 int main() {
-
-	readFromFIle();
+	ReadFile f1;
+	f1.readFromFIle();
+	f1.printFileContents();
 	writeToFile();
 
 	return 0;

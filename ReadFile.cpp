@@ -13,14 +13,8 @@
 
 using namespace std;
 
-void readFromFIle() {
 
-	int rowLength;
-	int columnLength;
-	string portal; // platform/website/app
-	string password;
-	string username;
-	string credentials[10][3];
+void ReadFile::readFromFIle() {
 
 	// open passwords.txt for reading
 	ifstream read("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/passwords.txt");
@@ -43,7 +37,8 @@ void readFromFIle() {
 		cout << "Unable to open the file!" << endl;
 		exit(-1);
 	}
-
+}
+void ReadFile::printFileContents(){
 	rowLength= sizeof credentials / sizeof credentials[0];
 	columnLength= sizeof credentials[0] / sizeof(string);
 

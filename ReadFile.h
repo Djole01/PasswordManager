@@ -11,17 +11,21 @@
 #include <string>
 using namespace std;
 
+#define ROWLENGTH 10
+#define COLUMNLENGTH 3
+
+
 class ReadFile{
 public:
-	string credentials[10][3];
+	string credentials[ROWLENGTH][COLUMNLENGTH];	// made separate arrays, not to break things with input
 	void readFromFIle();
 	void printFileContents();
+	void populateCredentials();
 private:				// code encapulation
-	int rowLength;
-	int columnLength;
 	string portal; // platform/website/app
 	string password;
 	string username;
+	string userInputArray[10][3];
 };
 
 #endif /* READFILE_H_ */

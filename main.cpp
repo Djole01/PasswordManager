@@ -6,10 +6,8 @@
 // Description : Writing to a file in C++
 //============================================================================
 
-#include <iostream>
-#include <string>
-#include <array>
-#include <fstream>
+
+
 #include "ReadFile.h"
 #include "WritingFiles.h"
 using namespace std;

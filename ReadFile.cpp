@@ -21,15 +21,15 @@ void ReadFile::readFromFIle() {
 
 	// if reading is successful
 	if (read.is_open()) {
-		// read one string type value from the file
-		//read >> words;
-		// add it to array of passwords
+
+		// read 3 strings in a row
+		// add it to multi-dimensional array of input
 
 		int i = 0;
 		while (read >> portal >> username >> password) {
-			credentials[i][0] = portal;
-			credentials[i][1] = password;
-			credentials[i][2] = username;
+			userInputArray[i][0] = portal;
+			userInputArray[i][1] = username;
+			userInputArray[i][2] = password;
 			i++;
 		}
 
@@ -38,13 +38,21 @@ void ReadFile::readFromFIle() {
 		exit(-1);
 	}
 }
-void ReadFile::printFileContents(){
-	rowLength= sizeof credentials / sizeof credentials[0];
-	columnLength= sizeof credentials[0] / sizeof(string);
 
-	// print out the contents of array
-	for (int x = 0; x < rowLength; x ++){
-		for (int y = 0; y < columnLength; y++) {
+void ReadFile::populateCredentials(){
+	for (int x = 0; x < ROWLENGTH; x ++){
+		for (int y = 0; y < COLUMNLENGTH; y++) {
+			credentials[x][y] = userInputArray[x][y];
+		}
+	}
+}
+
+void ReadFile::printFileContents(){
+
+	populateCredentials();
+	// print out the contents of multi-dimensional array
+	for (int x = 0; x < ROWLENGTH; x ++){
+		for (int y = 0; y < COLUMNLENGTH; y++) {
 			cout << credentials[x][y] << " ";
 		}
 		cout << endl;

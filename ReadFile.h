@@ -25,7 +25,7 @@ private:				// code encapulation
 	string portal; // platform/website/app
 	string password;
 	string username;
-	string userInputArray[10][3];
+	string userInputArray[ROWLENGTH][COLUMNLENGTH];
 };
 
 #endif /* READFILE_H_ */

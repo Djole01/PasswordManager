@@ -2,7 +2,7 @@
  * ReadFile.h
  *
  *  Created on: Apr 20, 2020
- *      Author: root
+ *      Author: Djordje
  */
 
 #ifndef READFILE_H_

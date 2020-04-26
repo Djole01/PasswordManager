@@ -1,9 +1,10 @@
 //============================================================================
 // Name        : ReadFile.cpp
 // Author      : Djordje
-// Version     :
-// Copyright   : Your copyright notice
-// Description : Read from text file.
+// Version     : 1
+// Copyright   : Copyright 2020, Djordje Obradovic, All rights reserved.
+// Description : Reads from the text file, and prints it's contents.
+// 			   : Populates the credentials array with the user input array.
 //============================================================================
 
 #include <iostream>

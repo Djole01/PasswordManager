@@ -1,3 +1,12 @@
+//============================================================================
+// Name        : ReadFile.cpp
+// Author      : Djordje
+// Version     : 1
+// Copyright   : Copyright 2020, Djordje Obradovic, All rights reserved.
+// Description : Opens the text file and writes the credentials to it
+//			     from the user input.
+//============================================================================
+
 #include <iostream>
 #include <fstream>
 #include "WritingFiles.h"

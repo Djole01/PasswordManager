@@ -42,5 +42,5 @@ int main() {
 
 /* TODO
  - Encrpyt and decrypt the file every time it is opened and closed.
- - Provide an ui through command line.
+ - Implement master password.
 */

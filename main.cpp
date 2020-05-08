@@ -9,17 +9,34 @@
 //============================================================================
 
 
-
+#include "UserOptions.h"
 #include "ReadFile.h"
 #include "WritingFiles.h"
+#include <iostream>
 using namespace std;
 
 int main() {
 	ReadFile f1;
-	f1.readFromFIle();
-	f1.printFileContents();
-	writeToFile();
-
+	int option, exitFlag;
+	exitFlag = 0;
+	while(exitFlag == 0){
+		option = UIoptions();
+		switch (option) {
+			case 1:
+				f1.readFromFIle();
+				f1.printFileContents();
+				break;
+			case 2:
+				writeToFile();
+				break;
+			case 3:
+				cout << "Goodbye! " << endl;
+				exitFlag = 1;
+				break;
+			default:
+				break;
+		}
+	}
 	return 0;
 }
 

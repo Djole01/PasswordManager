@@ -19,8 +19,8 @@ class ReadFile{
 public:
 	string credentials[ROWLENGTH][COLUMNLENGTH];	// made separate arrays, not to break things with input
 	void readFromFIle();
-	void printFileContents();
 	void populateCredentials();
+	void printFileContents();
 private:				// code encapulation
 	string portal; // platform/website/app
 	string password;

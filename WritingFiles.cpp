@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : ReadFile.cpp
+// Name        : WritingFiles.cpp
 // Author      : Djordje
 // Version     : 1
 // Copyright   : Copyright 2020, Djordje Obradovic, All rights reserved.

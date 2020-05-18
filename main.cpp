@@ -12,12 +12,14 @@
 #include "UserOptions.h"
 #include "ReadFile.h"
 #include "WritingFiles.h"
+#include "MasterPassword.h"
 #include <iostream>
 using namespace std;
 
 int main() {
 	ReadFile f1;
 	int option, exitFlag;
+	readFromFIleMaster();
 	exitFlag = 0;
 	while(exitFlag == 0){
 		option = UIoptions();
@@ -41,6 +43,6 @@ int main() {
 }
 
 /* TODO
- - Encrpyt and decrypt the file every time it is opened and closed.
  - Implement master password.
+ - Encrpyt and decrypt the file every time it is opened and closed.
 */

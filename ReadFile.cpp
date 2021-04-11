@@ -2,7 +2,6 @@
 // Name        : ReadFile.cpp
 // Author      : Djordje
 // Version     : 1
-// Copyright   : Copyright 2020, Djordje Obradovic, All rights reserved.
 // Description : Reads from the text file, and prints it's contents.
 // 			   : Populates the credentials array with the user input array.
 //============================================================================
@@ -18,7 +17,7 @@ using namespace std;
 void ReadFile::readFromFIle() {
 
 	// open passwords.txt for reading
-	ifstream read("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/passwords.txt");
+	ifstream read("passwords.txt");
 
 	// if reading is successful
 	if (read.is_open()) {

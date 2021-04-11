@@ -2,7 +2,6 @@
 // Name        : ReadFile.cpp
 // Author      : Djordje
 // Version     : 1
-// Copyright   : Copyright 2020, Djordje Obradovic, All rights reserved.
 // Description : Reads from the text file, and prints it's contents.
 // 			   : Populates the credentials array with the user input array.
 //============================================================================
@@ -20,8 +19,11 @@ void passCheck(string teMP);
 
 int flag;
 int flag2;
-void readFromFIleMaster() {
 
+string mpdir = "MasterPass.txt";
+	
+void readFromFIleMaster() {
+	
 	flag = masterPasswordIsSet();
 	if (flag == 0){	// password isnt set, create one
 
@@ -50,7 +52,7 @@ void readFromFIleMaster() {
 int masterPasswordIsSet(){
 
 	// open MasterPass.txt for reading
-		ifstream read("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/MasterPass.txt");
+		ifstream read(mpdir);
 
 		// if reading is successful
 		if (read.is_open()) {
@@ -63,7 +65,7 @@ int masterPasswordIsSet(){
 			return flag;
 
 		} else {
-			cout << "Unable to open the file!" << endl;
+			cout << "Unable to open the masterPassword file!" << endl;
 			exit(-1);
 		}
 }
@@ -73,7 +75,7 @@ void writeMasterPass(string mp){
 	    fstream writing;
 
 	    // open the file for writing
-	    writing.open("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/MasterPass.txt" , ios_base::out | ios_base::trunc);
+	    writing.open(mpdir, ios_base::out | ios_base::trunc);
 
 	    if (!writing.is_open()) {
 	        cout << "Failed to open the file!" << endl;
@@ -88,7 +90,7 @@ void writeMasterPass(string mp){
 void passCheck(string teMP){
 
 	// open MasterPass.txt for reading
-			ifstream read("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/MasterPass.txt");
+			ifstream read(mpdir);
 
 			// if reading is successful
 			if (read.is_open()) {

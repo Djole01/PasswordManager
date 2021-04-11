@@ -1,8 +1,7 @@
 //============================================================================
 // Name        : writeToFIle.cpp
-// Author      : Viope C++ course
+// Author      : Djordje
 // Version     : 1
-// Copyright   : Copyright 2020, Djordje Obradovic, All rights reserved.
 // Description : Password manager program. Let's user store a list of passwords,
 // 				display the list and edit it. The passwords will be stored in a
 // 				encrypted text file.
@@ -43,5 +42,6 @@ int main() {
 }
 
 /* TODO
- - Encrpyt and decrypt the file every time it is opened and closed.
+ - Create masterPassword.txt and passwords.txt if they do not exist
+ - Implement encryption algo.
 */

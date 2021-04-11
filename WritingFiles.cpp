@@ -2,7 +2,6 @@
 // Name        : WritingFiles.cpp
 // Author      : Djordje
 // Version     : 1
-// Copyright   : Copyright 2020, Djordje Obradovic, All rights reserved.
 // Description : Opens the text file and writes the credentials to it
 //			     from the user input.
 //============================================================================
@@ -18,7 +17,7 @@ void writeToFile()
     fstream writing;
 
     // open the file for writing
-    writing.open("/home/sdfe/1_Personal_Work/cpp_workspace/PasswordManager/src/passwords.txt" , ios_base::out | ios_base::app);
+    writing.open("passwords.txt" , ios_base::out | ios_base::app);
 
     if (!writing.is_open()) {
         cout << "Failed to open the file!" << endl;

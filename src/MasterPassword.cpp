@@ -71,7 +71,7 @@ int masterPasswordIsSet(){
 		} else {
 			cout << "Unable to open the masterPassword file!" << endl;
 			cout << "Creating new one." << endl;
-			createNewMPFile();
+			createNewFile(mpdir);
 			return masterPasswordIsSet();
 		}
 }
@@ -136,9 +136,9 @@ bool mpFileExists(string strDir){
 	else               return false;
 }
 
-void createNewMPFile(){
+void createNewFile(string FileName){
 
-	std::ofstream fs("MasterPass.txt");
+	std::ofstream fs(FileName);
 
 		if(!fs)
 		{

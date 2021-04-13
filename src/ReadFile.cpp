@@ -10,14 +10,17 @@
 #include <string>
 #include <fstream>
 #include "ReadFile.h"
+#include "MasterPassword.h"
 
 using namespace std;
 
 
 void ReadFile::readFromFIle() {
 
+	string pwFile;
+	pwFile = "passwords.txt";
 	// open passwords.txt for reading
-	ifstream read("passwords.txt");
+	ifstream read(pwFile);
 
 	// if reading is successful
 	if (read.is_open()) {
@@ -34,8 +37,10 @@ void ReadFile::readFromFIle() {
 		}
 
 	} else {
-		cout << "Unable to open the file!" << endl;
-		exit(-1);
+		cout << "Unable to open the passwords file!" << endl;
+		cout << "Creating new one." << endl;
+		createNewFile(pwFile);
+		ReadFile::readFromFIle();
 	}
 }
 
@@ -51,6 +56,7 @@ void ReadFile::printFileContents(){
 
 	populateCredentials();
 	// print out the contents of multi-dimensional array
+	cout << endl;
 	for (int x = 0; x < ROWLENGTH; x ++){
 		for (int y = 0; y < COLUMNLENGTH; y++) {
 			cout << credentials[x][y] << " ";

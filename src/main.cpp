@@ -42,7 +42,6 @@ int main() {
 }
 
 /* TODO
- - Create passwords.txt if they do not exist
  - If new masterPassword is set, empty credentials
  - Implement encryption algo.
 */

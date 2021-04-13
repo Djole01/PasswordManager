@@ -70,7 +70,9 @@ int masterPasswordIsSet(){
 		    }
 		} else {
 			cout << "Unable to open the masterPassword file!" << endl;
-			exit(-1);
+			cout << "Creating new one." << endl;
+			createNewMPFile();
+			return masterPasswordIsSet();
 		}
 }
 
@@ -126,9 +128,21 @@ void passCheck(string teMP){
 				exit(-1);
 			}
 }
+
 bool mpFileExists(string strDir){
 	namespace fs = std::__fs::filesystem;
 	fs::path f{ strDir };
 	if (fs::exists(f)) return true;
 	else               return false;
+}
+
+void createNewMPFile(){
+
+	std::ofstream fs("MasterPass.txt");
+
+		if(!fs)
+		{
+			std::cerr<<"Cannot open the output file."<<std::endl;
+		}
+	fs.close();
 }

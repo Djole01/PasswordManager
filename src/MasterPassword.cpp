@@ -10,6 +10,8 @@
 #include <string>
 #include <fstream>
 #include <filesystem>
+#include <stdio.h>
+
 #include "MasterPassword.h"
 
 using namespace std;
@@ -25,7 +27,7 @@ void readFromFIleMaster() {
 	
 	flag = masterPasswordIsSet();
 	if (flag == 0){	// password isn't set, create one
-
+		remove("passwords.txt");
 		string masterPassword;
 		string masterPassword2;
 		cout << "Master password not set.\nEnter new Master password:\n";
@@ -33,8 +35,11 @@ void readFromFIleMaster() {
 		cout << "Confirm it by entering it again:\n";
 		cin >> masterPassword2;
 		if (masterPassword == masterPassword2){
-			cout << "Password set";
+			cout << "Password set" << endl;
 			writeMasterPass(masterPassword);
+		}
+		else{
+			readFromFIleMaster();
 		}
 	}
 	else {	// password is set, log in.

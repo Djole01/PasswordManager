@@ -42,6 +42,5 @@ int main() {
 }
 
 /* TODO
- - If new masterPassword is set, empty credentials
  - Implement encryption algo.
 */

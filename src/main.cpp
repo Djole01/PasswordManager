@@ -42,5 +42,5 @@ int main() {
 }
 
 /* TODO
- - Implement encryption algo.
+ - encrypt pw file if login successful based on bcrypt(userinput == hash)
 */

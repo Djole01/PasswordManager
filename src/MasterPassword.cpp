@@ -13,6 +13,7 @@
 #include <stdio.h>
 
 #include "MasterPassword.h"
+#include "bcrypt.h"
 
 using namespace std;
 
@@ -30,13 +31,15 @@ void readFromFIleMaster() {
 		remove("passwords.txt");
 		string masterPassword;
 		string masterPassword2;
+		string hash;
 		cout << "Master password not set.\nEnter new Master password:\n";
 		cin >> masterPassword;
 		cout << "Confirm it by entering it again:\n";
 		cin >> masterPassword2;
 		if (masterPassword == masterPassword2){
+			hash = bcrypt::generateHash(masterPassword2);
+			writeMasterPass(hash);
 			cout << "Password set" << endl;
-			writeMasterPass(masterPassword);
 		}
 		else{
 			readFromFIleMaster();
@@ -108,19 +111,19 @@ void passCheck(string teMP){
 
 				// read second line to see if master password matches the entered one.
 
-				string realMP;
+				string realMPHash;
 				int line_no = 0;
-				while (line_no != 1 && getline(read, realMP)) {
+				while (line_no != 1 && getline(read, realMPHash)) {
 				    ++line_no;
 				}
 				if (line_no == 1) {
-					read >> realMP;
+					read >> realMPHash;
 				}
 				else {
 					cout << "Error with master password file" << endl;
 				}
 
-				if (realMP == teMP){
+				if (bcrypt::validatePassword(teMP, realMPHash)){
 					cout << "Login successful!" << endl;
 					flag2 = 1;
 				}
@@ -144,10 +147,9 @@ bool mpFileExists(string strDir){
 void createNewFile(string FileName){
 
 	std::ofstream fs(FileName);
-
-		if(!fs)
+	if(!fs)
 		{
-			std::cerr<<"Cannot open the output file."<<std::endl;
+			std::cerr<<"Error, cannot open the output file."<<std::endl;
 		}
 	fs.close();
 }

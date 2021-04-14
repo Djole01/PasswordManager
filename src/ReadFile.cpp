@@ -55,12 +55,22 @@ void ReadFile::populateCredentials(){
 void ReadFile::printFileContents(){
 
 	populateCredentials();
+	bool emptyLine;
 	// print out the contents of multi-dimensional array
 	cout << endl;
 	for (int x = 0; x < ROWLENGTH; x ++){
 		for (int y = 0; y < COLUMNLENGTH; y++) {
-			cout << credentials[x][y] << " ";
+			if(credentials[x][y] != ""){
+				cout << credentials[x][y] << " ";
+				emptyLine = 0;
+			}
+			else{
+				emptyLine = 1;
+			}
 		}
-		cout << endl;
+		if(!emptyLine){
+			cout << endl;
+		}
 	}
+	cout << endl;
 }

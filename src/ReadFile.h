@@ -11,7 +11,7 @@
 #include <string>
 using namespace std;
 
-#define ROWLENGTH 10
+#define ROWLENGTH 200
 #define COLUMNLENGTH 3
 
 

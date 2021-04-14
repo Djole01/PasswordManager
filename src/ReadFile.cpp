@@ -7,11 +7,10 @@
 //============================================================================
 
 #include <iostream>
-#include <string>
 #include <fstream>
 #include "ReadFile.h"
 #include "MasterPassword.h"
-
+#include "encryptionFile.h"
 using namespace std;
 
 
@@ -21,7 +20,6 @@ void ReadFile::readFromFIle() {
 	pwFile = "passwords.txt";
 	// open passwords.txt for reading
 	ifstream read(pwFile);
-
 	// if reading is successful
 	if (read.is_open()) {
 
@@ -35,6 +33,7 @@ void ReadFile::readFromFIle() {
 			userInputArray[i][2] = password;
 			i++;
 		}
+		read.close();
 
 	} else {
 		cout << "Unable to open the passwords file!" << endl;

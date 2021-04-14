@@ -12,7 +12,7 @@ void readFromFIleMaster();
 int masterPasswordIsSet();
 void writeMasterPass(std::string mp);
 void passCheck(std::string teMP);
-bool mpFileExists(std::string strDir);
+bool FileExists(std::string FileName);
 void createNewFile(std::string FileName);
 
 

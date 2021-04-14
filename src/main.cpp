@@ -7,18 +7,26 @@
 // 				encrypted text file.
 //============================================================================
 
+#include <iostream>
 
 #include "UserOptions.h"
 #include "ReadFile.h"
 #include "WritingFiles.h"
 #include "MasterPassword.h"
-#include <iostream>
+#include "encryptionFile.h"
+
 using namespace std;
 
 int main() {
 	ReadFile f1;
+	string pwFile;
+	pwFile = "passwords.txt";
 	int option, exitFlag;
+
 	readFromFIleMaster();
+	if(FileExists(pwFile)){
+		decrypt(pwFile);
+	}
 	exitFlag = 0;
 	while(exitFlag == 0){
 		option = UIoptions();
@@ -38,9 +46,11 @@ int main() {
 				break;
 		}
 	}
+	encrypt(pwFile);
 	return 0;
 }
 
 /* TODO
- - encrypt pw file if login successful based on bcrypt(userinput == hash)
+ - better encryption algo, and hide it from source files
+ - make pw files not writable
 */

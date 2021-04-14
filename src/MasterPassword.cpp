@@ -14,6 +14,8 @@
 
 #include "MasterPassword.h"
 #include "bcrypt.h"
+#include "encryptionFile.h"
+
 
 using namespace std;
 
@@ -62,7 +64,7 @@ int masterPasswordIsSet(){
 		ifstream read(mpdir);
 
 		// if reading is successful
-		if (mpFileExists(mpdir) && read.is_open()) {
+		if (FileExists(mpdir) && read.is_open()) {
 
 			// read first line to see if master password has been set already.
 
@@ -137,9 +139,9 @@ void passCheck(string teMP){
 			}
 }
 
-bool mpFileExists(string strDir){
+bool FileExists(string FileName){
 	namespace fs = std::__fs::filesystem;
-	fs::path f{ strDir };
+	fs::path f{ FileName };
 	if (fs::exists(f)) return true;
 	else               return false;
 }

@@ -1,4 +1,5 @@
 #include "encryptionFile.h"
+#include "myHiddenCharManipulaion.h"
 using namespace std;
 
 void encrypt(string fileName)
@@ -17,13 +18,28 @@ void encrypt(string fileName)
         cout<<"\nError Occurred, Opening/Creating the tmp File1!";
         exit(-1);
     }
-    while(fps>>noskipws>>ch)
-    {
-        ch = ch+100;
-        fpt<<ch;
-    }
+    HIDDENROUND1
+	/* hidden char manipulation from myHiddenCharManipulaion.h
+	 * while(fps>>noskipws>>ch){
+	 * ch = ch + x;    // for example
+	 * fpt<<ch;
+	 * }
+	 */
     fps.close();
     fpt.close();
+
+
+
+    fps.open(fileName, fstream::in);
+    fpt.open("tmp.txt", fstream::out);
+    HIDDENROUND2
+    fps.close();
+    fpt.close();
+
+
+
+
+
     fps.open(fileName, fstream::out);
     if(!fps)
     {
@@ -48,6 +64,7 @@ void decrypt(string fileName)
 {
     char ch;
     fstream fps, fpt;
+
     fps.open(fileName, fstream::out);
     if(!fps)
     {
@@ -60,13 +77,19 @@ void decrypt(string fileName)
         cout<<"\nError Occurred while Opening/Creating tmp File2!";
         exit(-1);
     }
-    while(fpt>>noskipws>>ch)
-    {
-        ch = ch-100;
-        fps<<ch;
-    }
+    HIDDENDECRYPT1
     fps.close();
     fpt.close();
+
+    fps.open(fileName, fstream::out);
+    fpt.open("tmp.txt", fstream::in);
+    HIDDENDECRYPT2
+    fps.close();
+    fpt.close();
+
     cout<<"\nFile '"<<fileName<<"' Decrypted Successfully!";
     cout<<endl;
 }
+
+
+

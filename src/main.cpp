@@ -58,6 +58,5 @@ int main() {
 }
 
 /* TODO
- - better encryption algo, and hide it from source files
- - make pw files not writable
+ - create pw files in /home/.config/DjolesPasswordManager instead
 */

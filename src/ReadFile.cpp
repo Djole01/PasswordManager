@@ -44,16 +44,18 @@ void ReadFile::readFromFIle() {
 }
 
 void ReadFile::populateCredentials(){
+
 	for (int x = 0; x < ROWLENGTH; x ++){
 		for (int y = 0; y < COLUMNLENGTH; y++) {
 			credentials[x][y] = userInputArray[x][y];
+			userInputArray[x][y] = "";
 		}
 	}
 }
 
 void ReadFile::printFileContents(){
 
-	populateCredentials();
+	ReadFile::populateCredentials();
 	bool emptyLine;
 	// print out the contents of multi-dimensional array
 	cout << endl;

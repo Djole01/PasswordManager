@@ -8,6 +8,7 @@
 //============================================================================
 
 #include <iostream>
+#include <cstdlib>
 
 #include "UserOptions.h"
 #include "ReadFile.h"
@@ -19,7 +20,7 @@ using namespace std;
 
 int main() {
 	ReadFile f1;
-	string pwFile;
+	string pwFile, cmd;
 	pwFile = "passwords.txt";
 	int option, exitFlag;
 
@@ -32,6 +33,8 @@ int main() {
 		option = UIoptions();
 		switch (option) {
 			case 1:
+				system("clear");
+				cout << "Displaying saved credentials below:" << endl;
 				f1.readFromFIle();
 				f1.printFileContents();
 				break;
@@ -39,6 +42,10 @@ int main() {
 				writeToFile();
 				break;
 			case 3:
+				cmd = "nano " + pwFile;
+				system(cmd.c_str());
+				break;
+			case 4:
 				cout << "Goodbye! " << endl;
 				exitFlag = 1;
 				break;

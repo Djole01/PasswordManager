@@ -17,8 +17,8 @@ Program creates 3 hidden files in home directory, .MasterPass.txt , passwords.tx
 These are neccessary for the program to work. Deleting these means deleting your passwords.
 
 # Install and run
-Download binary from releases
-./PasswordManagerGeorge in binary's location.
+Download archive from releases, unzip and cd into its directory
+./PasswordManagerGeorge
 
 To remove: 
 delete the binary + 3 hidden files in home directory, .MasterPass.txt , passwords.txt and tmpCrypt.txt. 

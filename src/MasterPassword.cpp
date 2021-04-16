@@ -11,26 +11,29 @@
 #include <fstream>
 #include <filesystem>
 #include <stdio.h>
+#include <stdlib.h>     /* getenv */
 
 #include "MasterPassword.h"
 #include "bcrypt.h"
 #include "encryptionFile.h"
 
-
 using namespace std;
-
-
 
 int flag;
 int flag2;
+string pathMP = "/.MasterPass.txt";
+string pathPwFile = "/.passwords.txt";
 
-string mpdir = "MasterPass.txt";
-	
 void readFromFIleMaster() {
+
+	string passwFile;
+	passwFile = getenv("HOME") + pathPwFile;
 	
 	flag = masterPasswordIsSet();
 	if (flag == 0){	// password isn't set, create one
-		remove("passwords.txt");
+		const char * c = passwFile.c_str();
+		remove(c);
+
 		string masterPassword;
 		string masterPassword2;
 		string hash;
@@ -60,6 +63,8 @@ void readFromFIleMaster() {
 
 int masterPasswordIsSet(){
 
+	string mpdir;
+	mpdir = getenv("HOME") + pathMP;
 	// open MasterPass.txt for reading
 		ifstream read(mpdir);
 
@@ -76,9 +81,9 @@ int masterPasswordIsSet(){
 		    else{
 				flag = std::stoi( isSet1 );
 				return flag;
-
 		    }
-		} else {
+		}
+		else {
 			cout << "Unable to open the masterPassword file!" << endl;
 			cout << "Creating new one." << endl;
 			createNewFile(mpdir);
@@ -87,59 +92,65 @@ int masterPasswordIsSet(){
 }
 
 void writeMasterPass(string mp){
-		// creating the file object
-	    fstream writing;
 
-	    // open the file for writing
-	    writing.open(mpdir, ios_base::out | ios_base::trunc);
+	string mpdir;
+	mpdir = getenv("HOME") + pathMP;
+	// creating the file object
+	fstream writing;
 
-	    if (!writing.is_open()) {
-	        cout << "Failed to open the file!" << endl;
-	        exit(-1);
-	    }
+	// open the file for writing
+	writing.open(mpdir, ios_base::out | ios_base::trunc);
 
-	    // file is open, let's move on...
-	    writing << 1 << "\n" << mp <<  endl;
-	    writing.close(); // close the file where the rows were stored in.
+	if (!writing.is_open()) {
+		cout << "Failed to open the file!" << endl;
+		exit(-1);
+	}
+
+	// file is open, let's move on...
+	writing << 1 << "\n" << mp <<  endl;
+	writing.close(); // close the file where the rows were stored in.
 }
 
 void passCheck(string teMP){
 
+	string mpdir;
+	mpdir = getenv("HOME") + pathMP;
 	// open MasterPass.txt for reading
-			ifstream read(mpdir);
+	ifstream read(mpdir);
 
-			// if reading is successful
-			if (read.is_open()) {
+	// if reading is successful
+	if (read.is_open()) {
 
-				// read second line to see if master password matches the entered one.
-
-				string realMPHash;
-				int line_no = 0;
-				while (line_no != 1 && getline(read, realMPHash)) {
-				    ++line_no;
-				}
-				if (line_no == 1) {
-					read >> realMPHash;
-				}
-				else {
-					cout << "Error with master password file" << endl;
-				}
-
-				if (bcrypt::validatePassword(teMP, realMPHash)){
-					cout << "Login successful!" << endl;
-					flag2 = 1;
-				}
-				else {
-					cout << "Login failed, master password does not match!" << endl;
-				}
-
-			} else {
-				cout << "Unable to open the file!" << endl;
-				exit(-1);
+		// read second line to see if master password matches the entered one.
+		string realMPHash;
+		int line_no = 0;
+		while (line_no != 1 && getline(read, realMPHash)) {
+			++line_no;
 			}
+		if (line_no == 1) {
+			read >> realMPHash;
+			}
+		else {
+			cout << "Error with master password file" << endl;
+			}
+
+		if (bcrypt::validatePassword(teMP, realMPHash)){
+			system("clear");
+			cout << "Login successful!" << endl;
+			flag2 = 1;
+			}
+		else {
+			cout << "Login failed, master password does not match!" << endl;
+			}
+	}
+	else {
+		cout << "Unable to open the file!" << endl;
+		exit(-1);
+	}
 }
 
 bool FileExists(string FileName){
+
 	namespace fs = std::__fs::filesystem;
 	fs::path f{ FileName };
 	if (fs::exists(f)) return true;
@@ -155,3 +166,5 @@ void createNewFile(string FileName){
 		}
 	fs.close();
 }
+
+

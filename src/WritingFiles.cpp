@@ -8,16 +8,22 @@
 
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>     /* getenv */
+
 #include "WritingFiles.h"
 using namespace std;
 
-void writeToFile()
-{
+void writeToFile(){
+
+	string pwFile;
+	string pathPwFile = "/.passwords.txt";
+	pwFile = getenv("HOME") + pathPwFile;
+
     // creating the file object
     fstream writing;
 
     // open the file for writing
-    writing.open("passwords.txt" , ios_base::out | ios_base::app);
+    writing.open(pwFile , ios_base::out | ios_base::app);
 
     if (!writing.is_open()) {
         cout << "Failed to open the file!" << endl;

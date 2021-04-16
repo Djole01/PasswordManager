@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <fstream>
+#include <stdlib.h>     /* getenv */
+
 #include "ReadFile.h"
 #include "MasterPassword.h"
 #include "encryptionFile.h"
@@ -17,7 +19,9 @@ using namespace std;
 void ReadFile::readFromFIle() {
 
 	string pwFile;
-	pwFile = "passwords.txt";
+	string pathPwFile = "/.passwords.txt";
+	pwFile = getenv("HOME") + pathPwFile;
+
 	// open passwords.txt for reading
 	ifstream read(pwFile);
 	// if reading is successful

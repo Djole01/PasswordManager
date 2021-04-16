@@ -4,6 +4,10 @@ using namespace std;
 
 void encrypt(string fileName)
 {
+	string tempTxt;
+	string pathTempTxt = "/.tmpCrypt.txt";
+	tempTxt = getenv("HOME") + pathTempTxt;
+
     char ch;
     fstream fps, fpt;
     fps.open(fileName, fstream::in);
@@ -12,7 +16,7 @@ void encrypt(string fileName)
         cout<<"\nError Occurred, Opening the Source File (to Read)!";
         exit(-1);
     }
-    fpt.open("tmp.txt", fstream::out);
+    fpt.open(tempTxt, fstream::out);
     if(!fpt)
     {
         cout<<"\nError Occurred, Opening/Creating the tmp File1!";
@@ -31,12 +35,10 @@ void encrypt(string fileName)
 
 
     fps.open(fileName, fstream::in);
-    fpt.open("tmp.txt", fstream::out);
+    fpt.open(tempTxt, fstream::out);
     HIDDENROUND2
     fps.close();
     fpt.close();
-
-
 
 
 
@@ -46,7 +48,7 @@ void encrypt(string fileName)
         cout<<"\nError Occurred, Opening the Source File (to write)!";
         exit(-1);
     }
-    fpt.open("tmp.txt", fstream::in);
+    fpt.open(tempTxt, fstream::in);
     if(!fpt)
     {
         cout<<"\nError Occurred, Opening the tmp File!";
@@ -62,6 +64,10 @@ void encrypt(string fileName)
 
 void decrypt(string fileName)
 {
+	string tempTxt;
+	string pathTempTxt = "/.tmpCrypt.txt";
+	tempTxt = getenv("HOME") + pathTempTxt;
+
     char ch;
     fstream fps, fpt;
 
@@ -71,7 +77,7 @@ void decrypt(string fileName)
         cout<<"\nError Occurred while Opening the Source File!";
         exit(-1);
     }
-    fpt.open("tmp.txt", fstream::in);
+    fpt.open(tempTxt, fstream::in);
     if(!fpt)
     {
         cout<<"\nError Occurred while Opening/Creating tmp File2!";
@@ -82,7 +88,7 @@ void decrypt(string fileName)
     fpt.close();
 
     fps.open(fileName, fstream::out);
-    fpt.open("tmp.txt", fstream::in);
+    fpt.open(tempTxt, fstream::in);
     HIDDENDECRYPT2
     fps.close();
     fpt.close();

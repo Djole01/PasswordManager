@@ -19,9 +19,11 @@
 using namespace std;
 
 int main() {
+
 	ReadFile f1;
 	string pwFile, cmd;
-	pwFile = "passwords.txt";
+	string pathPwFile = "/.passwords.txt";
+	pwFile = getenv("HOME") + pathPwFile;
 	int option, exitFlag;
 
 	readFromFIleMaster();

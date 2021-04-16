@@ -21,6 +21,8 @@ Download archive from releases, unzip and cd into its directory
 
 ./PasswordManagerGeorge
 
+It's possible to create a launcher for the program to run in terminal from an icon, if you wish so.
+
 To remove: 
 delete the binary + 3 hidden files in home directory, .MasterPass.txt , passwords.txt and tmpCrypt.txt. 
 

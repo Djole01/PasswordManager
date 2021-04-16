@@ -20,7 +20,10 @@ int UIoptions(){
 	cout << "  4. Exit  |";
 
 	cin >> option;
+	if(cin.fail()){
+		cin.clear();
+		cin.ignore();
+	}
 	cin.ignore();
 	return option;
 }
-

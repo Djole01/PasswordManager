@@ -9,7 +9,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <filesystem>
 #include <stdio.h>
 #include <stdlib.h>     /* getenv */
 
@@ -151,11 +150,14 @@ void passCheck(string teMP){
 
 bool FileExists(string FileName){
 
-	namespace fs = std::__fs::filesystem;
-	fs::path f{ FileName };
-	if (fs::exists(f)) return true;
-	else               return false;
+    std::ifstream file(FileName);
+    if(!file.is_open()){
+        return false;
+    }
+
+    return true;
 }
+
 
 void createNewFile(string FileName){
 

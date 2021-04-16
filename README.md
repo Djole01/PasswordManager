@@ -1,4 +1,5 @@
-#Password Manager George
+
+# Password Manager George
 
 Simple terminal password manager.
 

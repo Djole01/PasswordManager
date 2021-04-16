@@ -18,6 +18,7 @@ These are neccessary for the program to work. Deleting these means deleting your
 
 # Install and run
 Download archive from releases, unzip and cd into its directory
+
 ./PasswordManagerGeorge
 
 To remove: 

@@ -1,7 +1,7 @@
 
 # Password Manager George
 
-Simple terminal password manager.
+Simple Unix terminal password manager.
 
 Program allows user to:
 
@@ -20,6 +20,13 @@ These are neccessary for the program to work. Deleting these means deleting your
 Download and extract binary from tar.xz 
 ./PasswordManagerGeorge in binary's location.
 
-To remove delete the binary + 3 hidden files in home directory, .MasterPass.txt , passwords.txt and tmpCrypt.txt. 
+To remove: 
+delete the binary + 3 hidden files in home directory, .MasterPass.txt , passwords.txt and tmpCrypt.txt. 
+
+
+
+Credits: 
+- OpenBSD for Bcrypt, and hilch for c++ wrapper 
+https://github.com/hilch/Bcrypt.cpp
 
 

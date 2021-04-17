@@ -26,6 +26,7 @@ It's possible to create a launcher for the program to run in terminal from an ic
 To remove: 
 delete the binary + 3 hidden files in home directory, .MasterPass.txt , passwords.txt and tmpCrypt.txt. 
 
+Note: You should exit through the program by choosing option 4 to encrypt the passwords. Closing the terminal will not encrypt them, but it will not brake anything either, so when you run it next time you can encrypt by choosing option 4.
 
 
 Credits: 

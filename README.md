@@ -10,7 +10,7 @@ Program allows user to:
 3. See a list of passwords they have saved.
 4. Edit / remove passwords.
 
-Masterpassword gets encrypted with OpenBSD's bcrypt, hash gets saved in .MasterPass.txt
+Masterpassword gets hashed with OpenBSD's bcrypt, saved in .MasterPass.txt
 Passwords get encrypted through my own character manipulation algorithm. 
 
 Program creates 3 hidden files in home directory, .MasterPass.txt , passwords.txt and tmpCrypt.txt. 

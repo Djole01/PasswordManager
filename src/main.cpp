@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <cstdlib>
+#include <csignal>
 
 #include "UserOptions.h"
 #include "ReadFile.h"
@@ -18,7 +19,22 @@
 
 using namespace std;
 
+void signalHandler( int signum ) {
+   cout << "Interrupt signal (" << signum << ") received.\n";
+
+   // cleanup and close up stuff here
+   // terminate program
+   string pwFile;
+   string pathPwFile = "/.passwords.txt";
+   pwFile = getenv("HOME") + pathPwFile;
+   encrypt(pwFile);
+
+   exit(signum);
+}
+
 int main() {
+	// register signal SIGINT and signal handler
+	signal(SIGINT, signalHandler);
 
 	ReadFile f1;
 	string pwFile, cmd;
@@ -59,6 +75,3 @@ int main() {
 	return 0;
 }
 
-/* TODO
- - create pw files in /home/.config/DjolesPasswordManager instead
-*/

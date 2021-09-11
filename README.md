@@ -3,7 +3,7 @@
 
 Simple Unix terminal password manager.
 
-Program allows user to:
+Program allows users to:
 
 1. Log in with a master password.
 2. Save passwords / add passwords to a list.
